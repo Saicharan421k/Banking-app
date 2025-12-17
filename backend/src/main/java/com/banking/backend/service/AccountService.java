@@ -43,7 +43,12 @@ public class AccountService {
 
         BankAccount account = new BankAccount();
         account.setCustomer(customer);
-        account.setAccountNumber(UUID.randomUUID().toString().substring(0, 10));
+        
+        // Generate random 10-digit number starting with 9123
+        // 9123 + 6 random digits
+        String randomDigits = String.format("%06d", new java.util.Random().nextInt(1000000));
+        account.setAccountNumber("9123" + randomDigits);
+        
         account.setType(type);
         account.setBalance(BigDecimal.valueOf(1000));
         account.setStatus("ACTIVE");
