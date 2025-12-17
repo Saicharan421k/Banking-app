@@ -12,6 +12,7 @@ com\banking\backend\dto\Dtos$ProfileResponse.class
 com\banking\backend\service\AuthService.class
 com\banking\backend\dto\Dtos$CreateAccountRequest.class
 com\banking\backend\dto\Dtos$UpdateProfileRequest.class
+com\banking\backend\config\OpenAPIConfig.class
 com\banking\backend\dto\Dtos$TransferRequest.class
 com\banking\backend\dto\Dtos$VerifySecurityRequest.class
 com\banking\backend\service\TransferService.class
