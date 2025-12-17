@@ -80,6 +80,16 @@ public class AuthController {
         }
     }
 
+    @PostMapping("/forgot-password")
+    public ResponseEntity<?> forgotPassword(@RequestBody Dtos.ForgotPasswordRequest request) {
+        try {
+            authService.forgotPassword(request.getEmail());
+            return ResponseEntity.ok("A temporary password has been sent to your email.");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Failed: " + e.getMessage());
+        }
+    }
+
     @PutMapping("/profile")
     public ResponseEntity<?> updateProfile(java.security.Principal principal, @RequestBody Dtos.UpdateProfileRequest request) {
         try {

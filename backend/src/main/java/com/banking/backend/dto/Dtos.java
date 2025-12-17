@@ -22,6 +22,11 @@ public class Dtos {
     }
 
     @Data
+    public static class ForgotPasswordRequest {
+        private String email;
+    }
+
+    @Data
     public static class VerifySecurityRequest {
         private String username;
         private String securityAnswer;

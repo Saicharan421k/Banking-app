@@ -32,7 +32,7 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/security-question/**", "/api/auth/reset-password", "/api/public/**", "/", "/h2-console/**", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
+                .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/forgot-password", "/api/auth/security-question/**", "/api/auth/reset-password", "/api/public/**", "/", "/h2-console/**", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
                 .requestMatchers("/api/admin/**").hasAuthority("ROLE_ADMIN") // Strictly for Admin
                 .anyRequest().authenticated()
             )

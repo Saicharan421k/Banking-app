@@ -70,6 +70,33 @@ public class AuthService {
         userRepository.save(user);
     }
 
+    @Autowired
+    private EmailService emailService;
+
+    public void forgotPassword(String email) {
+        java.util.List<Customer> customers = customerRepository.findByEmail(email);
+        if (customers.isEmpty()) {
+            throw new RuntimeException("Email not found");
+        }
+        // In case of duplicates (bad data), just pick the first one
+        Customer customer = customers.get(0);
+        User user = customer.getUser();
+
+        // Generate temporary password
+        String tempPassword = java.util.UUID.randomUUID().toString().substring(0, 8);
+        user.setPassword(passwordEncoder.encode(tempPassword));
+        userRepository.save(user);
+
+        // Send Email
+        String subject = "Password Reset Request";
+        String body = "Hello " + customer.getName() + ",\n\n" +
+                "Your password has been reset. " +
+                "Your temporary password is: " + tempPassword + "\n\n" +
+                "Please login and change your password immediately.";
+        
+        emailService.sendEmail(email, subject, body);
+    }
+
     public Dtos.ProfileResponse getProfile(String username) {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));

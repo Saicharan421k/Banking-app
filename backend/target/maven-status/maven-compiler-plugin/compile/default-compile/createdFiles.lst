@@ -4,6 +4,8 @@ com\banking\backend\dto\Dtos.class
 com\banking\backend\BackendApplication.class
 com\banking\backend\controller\StatementController.class
 com\banking\backend\config\JwtUtil.class
+com\banking\backend\service\EmailService.class
+com\banking\backend\dto\Dtos$ForgotPasswordRequest.class
 com\banking\backend\repository\CustomerRepository.class
 com\banking\backend\dto\Dtos$LoginRequest.class
 com\banking\backend\entity\User.class
